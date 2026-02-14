@@ -1,0 +1,120 @@
+{
+  "name": "maktabkhooneh-downloader",
+  "version": "1.0.0",
+  "description": "Professional downloader for Maktabkhooneh courses",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "postinstall": "electron-builder install-app-deps",
+    "package": "npm run build && electron-builder --publish never",
+    "package:win": "npm run build && electron-builder --win --x64 --arm64 --publish never",
+    "package:mac": "npm run build && electron-builder --mac --universal --publish never",
+    "package:linux": "npm run build && electron-builder --linux --x64 --arm64 --publish never",
+    "package:all": "npm run build && electron-builder --win --x64 --arm64 --mac --universal --linux --x64 --arm64 --publish never"
+  },
+  "keywords": [
+    "maktabkhooneh",
+    "downloader",
+    "electron",
+    "video",
+    "education"
+  ],
+  "author": "VeilVulp <veilvulp@outlook.com>",
+  "license": "GPL-3.0",
+  "type": "commonjs",
+  "build": {
+    "appId": "com.veilvulp.maktabkhooneh-downloader",
+    "productName": "Maktabkhooneh Downloader",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*",
+      "!node_modules/**/*"
+    ],
+    "asar": true,
+    "compression": "maximum",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${name}-${version}-Win-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.education",
+      "artifactName": "${name}-${version}-Mac-Universal.${ext}"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "Education",
+      "artifactName": "${name}-${version}-Linux-${arch}.${ext}"
+    }
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "electron": "^40.4.1",
+    "electron-builder": "^26.7.0",
+    "electron-vite": "^5.0.0",
+    "tailwindcss": "^4.1.18",
+    "vite": "^7.3.1",
+    "@electron-toolkit/utils": "^4.0.0",
+    "lucide-static": "^0.564.0"
+  }
+}

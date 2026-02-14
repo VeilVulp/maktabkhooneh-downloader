@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build output
+out/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# Test files
+test-*.mjs
+e2e-workflow-tester.mjs
+
+# Reference file (development only)
+ref.mjs
+
+# Deployment script (excluded from repo)
+deploy.sh
+
+# Session data
+sessions.json
+
+# Temporary
+*.part
